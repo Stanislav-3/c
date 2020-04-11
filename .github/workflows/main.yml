@@ -1,4 +1,3 @@
-
 name: C/C++ CI
 
 on:
@@ -19,4 +18,4 @@ jobs:
       - name: Run generalMakefile
         env:
           TOKEN: ${{ secrets.TOKEN }}
-        run: make all
+        run: make -f generalMakefile all
