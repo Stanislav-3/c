@@ -16,7 +16,7 @@ jobs:
       - uses: actions/checkout@v2
         with:
           fetch-depth: 1
-      - name: Run generalMakefile
+      - name: Run -f generalMakefile
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: make all
