@@ -8,7 +8,7 @@ on:
 jobs:
   build:
 
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@master
@@ -17,4 +17,4 @@ jobs:
       - name: Run Makefile
         env:
           TOKEN: ${{ secrets.TOKEN }}
-        run: make -f generalMakefile
+        run: make all
