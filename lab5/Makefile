@@ -8,4 +8,3 @@ run: programm
 	
 clean:
 	rm -rf *.o programm
-	
