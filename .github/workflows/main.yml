@@ -19,3 +19,4 @@ fetch-depth: 1
 env: 
 TOKEN: ${{ secrets.TOKEN }} 
 run: make all
+runs-on: windows-latest
