@@ -17,3 +17,4 @@ jobs:
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: make all
+        runs-on: ubuntu-latest
