@@ -1,22 +1,22 @@
-name: CI 
 
-on: 
-push: 
-branches: [ master ] 
-pull_request: 
-branches: [ master ] 
+name: C/C++ CI
 
-jobs: 
-build: 
+on:
+  push:
+    branches: [ master ] 
+  pull_request:
+    branches: [ master ]
 
-runs-on: ubuntu-latest 
+jobs:
+  build:
 
-steps: 
-- uses: actions/checkout@master 
-with: 
-fetch-depth: 1 
-- name: Run generalMakefile 
-env: 
-TOKEN: ${{ secrets.TOKEN }} 
-run: make all
-runs-on: windows-latest
+    runs-on: windows-latest
+
+    steps:
+      - uses: actions/checkout@master
+        with:
+          fetch-depth: 1
+      - name: Run Makefile
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+        run: make all
