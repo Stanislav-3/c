@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "list.c"
 #include <string.h>
+#define size 1024
 
 /**
  *С помощью двунаправленного списка определить, является ли строка палиндромом
@@ -32,6 +33,7 @@ void createList(struct ListItem **list, char *string) {
                  (string[j] >= 'A' && string[j] <= 'Z')) && i < j) {
             j--;
         }
+        if (i == j) return;
         addChar(list, string[i]);
         addChar(list, string[j]);
         i++;
@@ -48,26 +50,31 @@ int isPalindrome(struct ListItem *list) {
     return 1;
 }
 
-void deleteList(struct ListItem *list) {
-    while(list) {
-        struct ListItem *temp = list;
-        list = list->next;
+void deleteList(struct ListItem **list) {
+    while(*list) {
+        struct ListItem *temp = *list;
+        *list = (*list)->next;
         free(temp);
     }
 }
 
 int main(void) {
-    char *string;
+    char *string = (char*)calloc(sizeof(char), size + 1);
     struct ListItem *list = NULL;
-    printf("Program checks whether the string is a palindrome\n"
+    printf("Program checks whether the english string is a palindrome\n"
            "Enter a string:\n");
     scanf("%[^\n]s", string);
+    if (string[size] != 0) {
+        printf("Error!\nThe string is too long(it must be <= %d)\n", size);
+        return -1;
+    }
     createList(&list, string);
     if (isPalindrome(list)) {
         printf("The string is a palindrome!\n");
     } else {
         printf("The string is not a palindrome!\n");
     }
-    deleteList(list);
+    free(string);
+    deleteList(&list);
     return 0;
 }
