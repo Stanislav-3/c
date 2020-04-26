@@ -12,6 +12,7 @@
 int input() {
     char ch[3] = {0};
     scanf("%[^\n]s", ch);
+    getchar();
     if (ch[2] != 0 || !(ch[0] >= '1' && ch[0] <= '9') ||
        (!(ch[1] >= '0' && ch[1] <= '9') && ch[1] != 0)) {
         printf("Invalid input...\n");
@@ -106,6 +107,7 @@ int main(void) {
     int n, i;
     struct listItem **list;
     struct treeItem **trees;
+    printf("\x1B[2J\x1B[H");
     printf("Enter amount of trees(<100): ");
     n = input();
     list = (struct listItem**)calloc(n, sizeof(struct listItem*));
@@ -131,5 +133,7 @@ int main(void) {
         deleteTree(trees[i]);
     }
     free(trees);
+    printf("Press any key to exit...");
+    getchar();
     return 0;
 }

@@ -61,9 +61,11 @@ void deleteList(struct ListItem **list) {
 int main(void) {
     char *string = (char*)calloc(sizeof(char), size + 1);
     struct ListItem *list = NULL;
+    printf("\x1B[2J\x1B[H");
     printf("Program checks whether the english string is a palindrome\n"
            "Enter a string:\n");
     scanf("%[^\n]s", string);
+    getchar();
     if (string[size] != 0) {
         printf("Error!\nThe string is too long(it must be <= %d)\n", size);
         return -1;
@@ -76,5 +78,7 @@ int main(void) {
     }
     free(string);
     deleteList(&list);
+    printf("Press any key to exit...");
+    getchar();
     return 0;
 }
